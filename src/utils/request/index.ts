@@ -38,7 +38,8 @@ function http<T = any>(
 
   const failHandler = (error: Response<Error>) => {
     afterRequest?.()
-    throw new Error(error?.message || 'Error')
+    const errorMessage = `(请点击左上角新建聊天创建一个新的对话，避免在同一个聊天窗口里对话次数过多，这将影响内容质量和响应速度) ${error?.message || 'Error'}`
+    throw new Error(errorMessage)
   }
 
   beforeRequest?.()
