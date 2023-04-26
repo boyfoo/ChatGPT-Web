@@ -113,8 +113,8 @@ async function chatReplyProcess(options: RequestOptions) {
     const code = error.statusCode
     global.console.log(error)
     if (Reflect.has(ErrorCodeMessage, code))
-      return sendResponse({ type: 'Fail', message: ErrorCodeMessage[code] })
-    return sendResponse({ type: 'Fail', message: error.message ?? 'Please check the back-end console' })
+      return sendResponse({ type: 'Fail', message: `${ErrorCodeMessage[code]}，请联系管理员` })
+    return sendResponse({ type: 'Fail', message: `(请点击左上角新建聊天创建一个新的对话，避免在同一个聊天窗口里对话次数过多，这将影响内容质量和响应速度) ${error.message}` ?? 'Please check the back-end console' })
   }
 }
 
